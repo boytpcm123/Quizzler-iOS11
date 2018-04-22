@@ -155,13 +155,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="btnAnswerFalse" destination="T5N-xc-sVz" id="ebB-Tk-vNt"/>
-                        <outlet property="btnAnswerTrue" destination="exB-ZS-1U0" id="Ire-py-edb"/>
                         <outlet property="progressBar" destination="Dsa-Z7-OdN" id="Jep-Z7-uzr"/>
                         <outlet property="progressLabel" destination="qil-6C-XPA" id="vOI-gf-aRi"/>
                         <outlet property="questionLabel" destination="4GJ-Ce-brK" id="pIn-gm-ACF"/>
                         <outlet property="scoreLabel" destination="c0R-Fj-fUI" id="31D-zq-NpU"/>
-                        <outlet property="widthProgressBar" destination="iCP-9o-N7W" id="z6Q-jc-tcg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

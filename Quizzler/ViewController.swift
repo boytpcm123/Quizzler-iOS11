@@ -21,14 +21,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet var progressBar: UIView!
     @IBOutlet weak var progressLabel: UILabel!
-    @IBOutlet weak var widthProgressBar: NSLayoutConstraint!
-    @IBOutlet weak var btnAnswerTrue: UIButton!
-    @IBOutlet weak var btnAnswerFalse: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        startOver()
+        totalQuestion = allQuestion.list.count
+        updateUI()
         
     }
 
@@ -46,10 +44,10 @@ class ViewController: UIViewController {
             let restartAction = UIAlertAction(title: "Restart", style: .default) { (UIAlertAction) in
                 self.startOver()
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            //let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             
             alert.addAction(restartAction)
-            alert.addAction(cancelAction)
+            //alert.addAction(cancelAction)
             present(alert, animated: true, completion: nil)
 
             return
@@ -59,7 +57,7 @@ class ViewController: UIViewController {
         progressLabel.text = "\(questionNumber+1)/\(totalQuestion)"
         scoreLabel.text = "Score: \(score)"
         
-        widthProgressBar.constant = view.bounds.size.width * (CGFloat(questionNumber+1) / CGFloat(totalQuestion))
+        progressBar.frame.size.width = (view.bounds.size.width / CGFloat(totalQuestion)) * CGFloat(questionNumber + 1)
         
     }
     
@@ -72,10 +70,10 @@ class ViewController: UIViewController {
     
     func checkAnswer() {
         if pickedAnswer == allQuestion.list[questionNumber].answer {
+            ProgressHUD.showSuccess("Correct!")
             score = score + 1
-            print("You got it!")
         } else {
-            print("Wrong!")
+            ProgressHUD.showSuccess("Wrong!")
         }
         nextQuestion()
     }
@@ -84,7 +82,6 @@ class ViewController: UIViewController {
     func startOver() {
         questionNumber = 0;
         score = 0;
-        totalQuestion = allQuestion.list.count
         updateUI()
     }
     
